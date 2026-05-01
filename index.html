@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survey — Barangay & Tourism Survey</title>
+
+  <!-- Google Fonts — works in VSCode Live Server & browser -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- ══ CUSTOM CURSOR ══ -->
+  <div class="cur-dot" id="cDot"></div>
+  <div class="cur-ring" id="cRing"></div>
+
+  <!-- ════════════════════════════════════
+       LOGIN SCREEN
+  ════════════════════════════════════ -->
+  <div class="screen active" id="sLogin">
+
+    <!-- Background decorations -->
+    <div class="bg-deco">
+      <div class="orb o1"></div>
+      <div class="orb o2"></div>
+      <div class="orb o3"></div>
+      <div class="orb o4"></div>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="bg-stripe"></div>
+
+    <!-- Floating leaves -->
+    <div class="leaf lf1"><img src="assets/leaf-sm.svg" alt="" /></div>
+    <div class="leaf lf2"><img src="assets/leaf-md.svg" alt="" /></div>
+    <div class="leaf lf3"><img src="assets/leaf-xs.svg" alt="" /></div>
+    <div class="leaf lf4"><img src="assets/leaf-sm.svg" alt="" /></div>
+    <div class="leaf lf5"><img src="assets/leaf-md.svg" alt="" /></div>
+
+    <!-- Corner watermark -->
+    <div class="corner-mark"><img src="assets/leaf-watermark.svg" alt="" /></div>
+
+    <!-- Theme toggle -->
+    <button class="theme-btn" id="tT1" title="Toggle dark/light mode">
+      <img src="assets/icon-sun.svg" class="tico sun" alt="Light mode" />
+      <img src="assets/icon-moon.svg" class="tico moon" alt="Dark mode" />
+    </button>
+
+    <!-- Login Card -->
+    <div class="lcard" id="lCard">
+      <div class="llogo">
+        <div class="lleaf"><img src="assets/logo-leaf.svg" alt="SurVerde logo" /></div>
+        <span class="ltxt">SurVerde</span>
+      </div>
+      <h1 class="ltitle">Welcome<br /><em>back.</em></h1>
+
+      <form action="login.php" method="POST">
+
+        <div class="fg">
+          <label class="fl">Resident ID / Email</label>
+          <input class="fi" id="lEm" name="username" type="text" placeholder="e.g. RES-00123 or juan@email.com" autocomplete="off" required />
+        </div>
+
+        <div class="fg">
+          <label class="fl">Password</label>
+          <div class="iwrap">
+            <input class="fi" id="lPw" name="password" type="password" placeholder="••••••••" required />
+            <button class="shp" type="button">show</button>
+          </div>
+        </div>
+
+        <button class="btn" id="lBtn" type="button"><span>Continue</span><img src="assets/icon-arrow.svg" class="barr" alt="" /></button>
+
+      </form>
+
+      <p class="lfoot">Don't have an account? <a href="#" id="goReg">Register here</a></p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════
+       REGISTER SCREEN
+  ════════════════════════════════════ -->
+  <div class="screen" id="sReg">
+
+    <div class="bg-deco">
+      <div class="orb o1"></div>
+      <div class="orb o2"></div>
+      <div class="orb o3"></div>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="bg-stripe"></div>
+
+    <div class="leaf lf1"><img src="assets/leaf-md.svg" alt="" /></div>
+    <div class="leaf lf3"><img src="assets/leaf-xs.svg" alt="" /></div>
+
+    <button class="theme-btn" id="tT2" title="Toggle dark/light mode">
+      <img src="assets/icon-sun.svg" class="tico sun" alt="Light mode" />
+      <img src="assets/icon-moon.svg" class="tico moon" alt="Dark mode" />
+    </button>
+
+    <div class="lcard" id="rCard">
+      <div class="llogo">
+        <div class="lleaf"><img src="assets/logo-leaf.svg" alt="SurVerde logo" /></div>
+        <span class="ltxt">SurVerde</span>
+      </div>
+      <h1 class="ltitle">Create your<br /><em>account.</em></h1>
+
+      <form action="register.php" method="POST">
+
+        <div class="fr">
+          <div class="fg">
+            <label class="fl">First Name</label>
+            <input class="fi" name="fname" type="text" placeholder="Juan" required />
+          </div>
+
+          <div class="fg">
+            <label class="fl">Last Name</label>
+            <input class="fi" name="lname" type="text" placeholder="dela Cruz" required />
+          </div>
+        </div>
+
+        <div class="fg">
+          <label class="fl">Email Address</label>
+          <input class="fi" name="email" type="email" placeholder="juan@email.com" required />
+        </div>
+
+        <div class="fg">
+          <label class="fl">Contact Number</label>
+          <input class="fi" name="contact" type="tel" placeholder="09XX-XXX-XXXX" />
+        </div>
+
+        <div class="fg">
+          <label class="fl">Barangay / Area</label>
+          <select class="fi fsel" name="barangay" required>
+            <option value="">Select your Barangay</option>
+            <option>Barangay — Bagong Pag-asa</option>
+            <option>Barangay — Bago Bantay</option>
+            <option>Barangay — Bahay Toro</option>
+            <option>Barangay — Bungad</option>
+            <option>Barangay — Sto.Cristo</option>
+          </select>
+        </div>
+
+        <div class="fg">
+          <label class="fl">Password</label>
+          <input class="fi" name="password" type="password" placeholder="Create a password" required />
+        </div>
+
+        <button class="btn" type="submit">
+          <span>Register</span>
+          <img src="assets/icon-arrow.svg" class="barr" alt="" />
+        </button>
+
+      </form>
+
+      <p class="lfoot">Already have an account? <a href="#" id="goLog">Sign in</a></p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════
+       MAIN APP
+  ════════════════════════════════════ -->
+  <div class="screen" id="sApp">
+
+    <!-- App background layers -->
+    <div class="app-bg-grid"></div>
+    <div class="app-orb aorb1"></div>
+    <div class="app-orb aorb2"></div>
+
+    <!-- ── Topbar ── -->
+    <header class="topbar">
+      <div class="tbl">
+        <div class="lleaf sm"><img src="assets/logo-leaf.svg" alt="SurVerde" /></div>
+        <span class="ltxt">Survey</span>
+      </div>
+
+      <nav class="tnav">
+        <button class="tbtn act" data-tab="health">
+          <img src="assets/icon-health.svg" class="tic" alt="" /> Health Survey
+        </button>
+        <button class="tbtn" data-tab="tourism">
+          <img src="assets/icon-tourism.svg" class="tic" alt="" /> Tourism Feedback
+        </button>
+      </nav>
+
+      <div class="tbr">
+        <button class="theme-btn inl" id="tT3" title="Toggle dark/light mode">
+          <img src="assets/icon-sun.svg" class="tico sun" alt="Light mode" />
+          <img src="assets/icon-moon.svg" class="tico moon" alt="Dark mode" />
+        </button>
+        <div class="uchip">
+          <div class="uav">J</div>
+          <span class="uname">Juan</span>
+        </div>
+        <button class="lout" id="logOut" title="Logout">
+          <img src="assets/icon-logout.svg" alt="Logout" />
+        </button>
+      </div>
+    </header>
+
+    <!-- ══════════════════════════════
+         HEALTH SURVEY TAB
+    ══════════════════════════════ -->
+    <main class="tc act" id="tHealth">
+      <div class="swrap">
+
+        <div class="shdr fi2">
+          <h2 class="stitl">Your Health,<br /><em>Our Priority.</em></h2>
+          <p class="sdesc">Help our barangay health workers monitor community wellness, track COVID-19 status, and identify health trends. All responses are kept strictly confidential and used only for community health planning.</p>
+        </div>
+
+        <div class="prog-wrap fi2" style="animation-delay:.05s">
+          <div class="prog-bar" id="hProg" style="width:0%"></div>
+        </div>
+
+        <form class="sform" id="hForm" novalidate>
+
+          <!-- ── Section 01: Personal Information ── -->
+          <fieldset class="fsec fi2" style="animation-delay:.10s">
+            <legend class="slbl"><span class="snum">01</span><span>Personal Information</span></legend>
+            <div class="info-box">
+              <img src="assets/icon-info.svg" class="iico" alt="" />
+              <span>Please provide accurate information so our health workers can reach you if needed.</span>
+            </div>
+
+            <div class="fg">
+              <label class="fl">Full Name <span class="req">*</span></label>
+              <input class="fi" type="text" name="fullname" placeholder="Juan Dela Cruz" required />
+            </div>
+            <div class="fr">
+              <div class="fg"><label class="fl">Age <span class="req">*</span></label><input class="fi" type="number" name="age" min="1" max="120" placeholder="25" required /></div>
+              <div class="fg"><label class="fl">Date of Birth</label><input class="fi" type="date" name="dob" /></div>
+            </div>
+            <div class="fg">
+              <label class="fl">Gender</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="gender" value="Male" /> Male</label>
+                <label class="rp"><input type="radio" name="gender" value="Female" /> Female</label>
+                <label class="rp"><input type="radio" name="gender" value="Other" /> Other</label>
+                <label class="rp"><input type="radio" name="gender" value="Prefer not to say" /> Prefer not to say</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Civil Status</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="civil" value="Single" /> Single</label>
+                <label class="rp"><input type="radio" name="civil" value="Married" /> Married</label>
+                <label class="rp"><input type="radio" name="civil" value="Widowed" /> Widowed</label>
+                <label class="rp"><input type="radio" name="civil" value="Separated" /> Separated</label>
+              </div>
+            </div>
+            <div class="fr">
+              <div class="fg">
+                <label class="fl">Address / Barangay <span class="req">*</span></label>
+                <select class="fi fsel" name="purok">
+                  <option value="">Select Barangay</option>
+                  <option>Barangay — Bagong Pag-asa</option>
+                  <option>Barangay — Bago Bantay</option>
+                  <option>Barangay — Bahay Toro</option>
+                  <option>Barangay — Bungad</option>
+                  <option>Barangay — Sto.Cristo</option>
+                </select>
+              </div>
+              <div class="fg"><label class="fl">Contact Number</label><input class="fi" type="tel" name="contact" placeholder="09XX-XXX-XXXX" /></div>
+            </div>
+            <div class="fg">
+              <label class="fl">Occupation / Source of Income</label>
+              <select class="fi fsel" name="occup">
+                <option value="">Select occupation</option>
+                <option>Employed (Government)</option>
+                <option>Employed (Private)</option>
+                <option>Self-employed / Business</option>
+                <option>Farmer / Fisher</option>
+                <option>Student</option>
+                <option>Unemployed</option>
+                <option>Retired</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg"><label class="fl">Number of Household Members</label><input class="fi" type="number" name="household" min="1" max="30" placeholder="e.g. 5" /></div>
+          </fieldset>
+
+          <!-- ── Section 02: COVID-19 & Vaccination ── -->
+          <fieldset class="fsec fi2" style="animation-delay:.15s">
+            <legend class="slbl"><span class="snum">02</span><span>COVID-19 &amp; Vaccination Status</span></legend>
+
+            <div class="fg">
+              <label class="fl">Vaccination Status</label>
+              <div class="vt" id="vaxT">
+                <button type="button" class="vb act" data-val="Vaccinated">✔ Vaccinated</button>
+                <button type="button" class="vb" data-val="Unvaccinated">✕ Unvaccinated</button>
+                <button type="button" class="vb" data-val="Booster">⊕ Booster</button>
+              </div>
+              <input type="hidden" name="vaccination" value="Vaccinated" id="vaxIn" />
+            </div>
+            <div class="fg">
+              <label class="fl">Vaccine Brand Received</label>
+              <select class="fi fsel" name="vaccine">
+                <option value="">Select vaccine brand</option>
+                <option>Pfizer-BioNTech</option>
+                <option>Moderna</option>
+                <option>AstraZeneca</option>
+                <option>Johnson &amp; Johnson</option>
+                <option>Sinovac (CoronaVac)</option>
+                <option>Sinopharm</option>
+                <option>Sputnik V</option>
+                <option>Not Applicable</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl">COVID-19 History</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="covidHist" value="Never infected" /> Never infected</label>
+                <label class="rp"><input type="radio" name="covidHist" value="Recovered" /> Recovered</label>
+                <label class="rp"><input type="radio" name="covidHist" value="Currently positive" /> Currently positive</label>
+                <label class="rp"><input type="radio" name="covidHist" value="Uncertain" /> Uncertain</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Have you been in close contact with a COVID-19 case in the last 14 days?</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="exposure" value="Yes" /> Yes</label>
+                <label class="rp"><input type="radio" name="exposure" value="No" /> No</label>
+                <label class="rp"><input type="radio" name="exposure" value="Unsure" /> Unsure</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ── Section 03: Symptoms & Medical ── -->
+          <fieldset class="fsec fi2" style="animation-delay:.20s">
+            <legend class="slbl"><span class="snum">03</span><span>Symptoms &amp; Medical History</span></legend>
+
+            <div class="fg">
+              <label class="fl">Current or Recent Symptoms <span class="hint">(select all that apply)</span></label>
+              <div class="cg">
+                <label class="cp"><input type="checkbox" name="sym" value="Fever" /> 🌡 Fever</label>
+                <label class="cp"><input type="checkbox" name="sym" value="Cough" />Cough</label>
+                <label class="cp"><input type="checkbox" name="sym" value="Colds" />Colds</label>
+                <label class="cp"><input type="checkbox" name="sym" value="Fatigue" />Fatigue</label>
+                <label class="cp"><input type="checkbox" name="sym" value="Headache" />Headache</label>
+                <label class="cp"><input type="checkbox" name="sym" value="Body pain" />Body Pain</label>
+                <label class="cp"><input type="checkbox" name="sym" value="Loss of taste/smell" />Loss of taste/smell</label>
+                <label class="cp"><input type="checkbox" name="sym" value="Difficulty breathing" /> Difficulty breathing</label>
+                <label class="cp"><input type="checkbox" name="sym" value="Sore throat" />Sore throat</label>
+                <label class="cp"><input type="checkbox" name="sym" value="Diarrhea" /> Diarrhea</label>
+                <label class="cp"><input type="checkbox" name="sym" value="None" />None</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Pre-existing Medical Conditions <span class="hint">(select all that apply)</span></label>
+              <div class="cg">
+                <label class="cp"><input type="checkbox" name="cond" value="Hypertension" /> Hypertension</label>
+                <label class="cp"><input type="checkbox" name="cond" value="Diabetes" /> Diabetes</label>
+                <label class="cp"><input type="checkbox" name="cond" value="Asthma" /> Asthma</label>
+                <label class="cp"><input type="checkbox" name="cond" value="Heart disease" /> Heart Disease</label>
+                <label class="cp"><input type="checkbox" name="cond" value="Kidney disease" /> Kidney Disease</label>
+                <label class="cp"><input type="checkbox" name="cond" value="Cancer" /> Cancer</label>
+                <label class="cp"><input type="checkbox" name="cond" value="Obesity" /> Obesity</label>
+                <label class="cp"><input type="checkbox" name="cond" value="Tuberculosis" /> Tuberculosis</label>
+                <label class="cp"><input type="checkbox" name="cond" value="None" />None</label>
+              </div>
+            </div>
+            <div class="fr">
+              <div class="fg"><label class="fl">Last Medical Checkup</label><input class="fi" type="date" name="lastChk" /></div>
+              <div class="fg">
+                <label class="fl">Currently taking medication?</label>
+                <div class="rg">
+                  <label class="rp"><input type="radio" name="meds" value="Yes" /> Yes</label>
+                  <label class="rp"><input type="radio" name="meds" value="No" /> No</label>
+                </div>
+              </div>
+            </div>
+            <div class="fg"><label class="fl">Current Medications (if any)</label><input class="fi" type="text" name="medList" placeholder="e.g. Amlodipine, Metformin" /></div>
+          </div>
+
+          <!-- ── Section 04: Mental Health ── -->
+          <fieldset class="fsec fi2" style="animation-delay:.25s">
+            <legend class="slbl"><span class="snum">04</span><span>Mental Health &amp; Well-being</span></legend>
+            <div class="info-box">
+              <img src="assets/icon-heart.svg" class="iico" alt="" />
+              <span>Mental health matters too. Your honest answers help us provide better support programs for the community.</span>
+            </div>
+
+            <div class="fg">
+              <label class="fl">Rate your overall mental well-being this past month <span class="hint">(1 = Very Poor, 10 = Excellent)</span></label>
+              <div class="scale-row" id="mentalScale">
+                <button type="button" class="scale-btn" data-v="1">1</button>
+                <button type="button" class="scale-btn" data-v="2">2</button>
+                <button type="button" class="scale-btn" data-v="3">3</button>
+                <button type="button" class="scale-btn" data-v="4">4</button>
+                <button type="button" class="scale-btn" data-v="5">5</button>
+                <button type="button" class="scale-btn" data-v="6">6</button>
+                <button type="button" class="scale-btn" data-v="7">7</button>
+                <button type="button" class="scale-btn" data-v="8">8</button>
+                <button type="button" class="scale-btn" data-v="9">9</button>
+                <button type="button" class="scale-btn" data-v="10">10</button>
+              </div>
+              <div class="scale-ends"><span>Very Poor</span><span>Excellent</span></div>
+              <input type="hidden" name="mentalScore" id="mentalIn" />
+            </div>
+            <div class="fg">
+              <label class="fl">Experienced in the past 2 weeks <span class="hint">(select all that apply)</span></label>
+              <div class="cg">
+                <label class="cp"><input type="checkbox" name="mental" value="Anxiety" />Anxiety</label>
+                <label class="cp"><input type="checkbox" name="mental" value="Depression" />Depression</label>
+                <label class="cp"><input type="checkbox" name="mental" value="Sleep difficulty" />Sleep difficulty</label>
+                <label class="cp"><input type="checkbox" name="mental" value="Loss of appetite" />Loss of appetite</label>
+                <label class="cp"><input type="checkbox" name="mental" value="Stress" />Stress</label>
+                <label class="cp"><input type="checkbox" name="mental" value="None" />None</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Are you able to access the barangay health center's services?</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="bhcAccess" value="Yes" /> Yes</label>
+                <label class="rp"><input type="radio" name="bhcAccess" value="No" /> No</label>
+                <label class="rp"><input type="radio" name="bhcAccess" value="Sometimes" /> Sometimes</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ── Section 05: Lifestyle ── -->
+          <fieldset class="fsec fi2" style="animation-delay:.30s">
+            <legend class="slbl"><span class="snum">05</span><span>Lifestyle &amp; Nutrition</span></legend>
+
+            <div class="fg">
+              <label class="fl">How often do you exercise per week?</label>
+              <select class="fi fsel" name="exercise">
+                <option value="">Select frequency</option>
+                <option>Daily</option>
+                <option>3–5 times a week</option>
+                <option>1–2 times a week</option>
+                <option>Rarely</option>
+                <option>Never</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl">How would you describe your usual diet?</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="diet" value="Balanced" /> Balanced</label>
+                <label class="rp"><input type="radio" name="diet" value="Mostly vegetables" /> Mostly vegetables</label>
+                <label class="rp"><input type="radio" name="diet" value="High in meat" /> High in meat</label>
+                <label class="rp"><input type="radio" name="diet" value="Irregular" /> Irregular</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Do you smoke?</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="smoke" value="No" /> No</label>
+                <label class="rp"><input type="radio" name="smoke" value="Occasionally" /> Occasionally</label>
+                <label class="rp"><input type="radio" name="smoke" value="Regularly" /> Regularly</label>
+                <label class="rp"><input type="radio" name="smoke" value="Former smoker" /> Former smoker</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Do you consume alcohol?</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="alc" value="No" /> No</label>
+                <label class="rp"><input type="radio" name="alc" value="Occasionally" /> Occasionally</label>
+                <label class="rp"><input type="radio" name="alc" value="Regularly" /> Regularly</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Primary source of drinking water</label>
+              <select class="fi fsel" name="water">
+                <option value="">Select source</option>
+                <option>Level III (piped/tap water)</option>
+                <option>Bottled water</option>
+                <option>Water refilling station</option>
+                <option>Level II (communal faucet)</option>
+                <option>Level I (point source/spring)</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- ── Section 06: Community Feedback ── -->
+          <fieldset class="fsec fi2" style="animation-delay:.35s">
+            <legend class="slbl"><span class="snum">06</span><span>Community Health Feedback</span></legend>
+
+            <div class="fg">
+              <label class="fl">How satisfied are you with the barangay health services? <span class="hint">(tap to rate)</span></label>
+              <div class="sr" id="hStar1">
+                <span class="st" data-val="1">★</span>
+                <span class="st" data-val="2">★</span>
+                <span class="st" data-val="3">★</span>
+                <span class="st" data-val="4">★</span>
+                <span class="st" data-val="5">★</span>
+                <span class="slbl-star">Not yet rated</span>
+              </div>
+              <input type="hidden" name="bhcSat" />
+            </div>
+            <div class="fg">
+              <label class="fl">What health programs does the barangay need most? <span class="hint">(select all that apply)</span></label>
+              <div class="cg">
+                <label class="cp"><input type="checkbox" name="prog" value="Free checkup" /> Free checkup</label>
+                <label class="cp"><input type="checkbox" name="prog" value="Dental care" /> Dental care</label>
+                <label class="cp"><input type="checkbox" name="prog" value="Mental health" /> Mental health support</label>
+                <label class="cp"><input type="checkbox" name="prog" value="Nutrition program" /> Nutrition program</label>
+                <label class="cp"><input type="checkbox" name="prog" value="Senior citizen care" /> Senior citizen care</label>
+                <label class="cp"><input type="checkbox" name="prog" value="TB-DOTS" /> TB-DOTS program</label>
+                <label class="cp"><input type="checkbox" name="prog" value="Mother and child" /> Mother &amp; child care</label>
+                <label class="cp"><input type="checkbox" name="prog" value="Health seminars" /> Health seminars</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Additional health concerns or suggestions</label>
+              <textarea class="fi fta" name="healthNotes" placeholder="Share any health concerns, suggestions for improvement, or anything you'd like the barangay health office to know..."></textarea>
+            </div>
+          </fieldset>
+
+          <div class="fi2" style="animation-delay:.40s">
+            <button type="submit" class="btn bsub">
+              <span>Submit Health Report</span>
+              <img src="assets/icon-arrow.svg" class="barr" alt="" />
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </main>
+
+    <!-- ══════════════════════════════
+         TOURISM FEEDBACK TAB
+    ══════════════════════════════ -->
+    <main class="tc" id="tTour">
+      <div class="swrap">
+
+        <div class="shdr fi2">
+          <h2 class="stitl" id="tourTit">Help Us Improve<br /><em>Your Experience.</em></h2>
+          <p class="sdesc" id="tourDesc">Your feedback on local tourist spots, heritage sites, and community attractions helps us improve facilities and services for every visitor. Every response counts!</p>
+        </div>
+
+        <div class="prog-wrap fi2" style="animation-delay:.05s">
+          <div class="prog-bar tour-bar" id="tProg" style="width:0%"></div>
+        </div>
+
+        <form class="sform" id="tForm" novalidate>
+
+          <!-- ── Section T01: Visitor Profile ── -->
+          <fieldset class="fsec tour-sec fi2" style="animation-delay:.10s">
+            <legend class="slbl"><span class="snum blue">01</span><span>Visitor Profile</span></legend>
+
+            <div class="fr">
+              <div class="fg">
+                <label class="fl">Nationality</label>
+                <div class="rg">
+                  <label class="rp"><input type="radio" name="nat" value="Local" checked /> 🇵🇭 Local</label>
+                  <label class="rp"><input type="radio" name="nat" value="Foreign" /> ✈ Foreign</label>
+                </div>
+              </div>
+              <div class="fg">
+                <label class="fl">Age Group</label>
+                <select class="fi fsel" name="ageGrp">
+                  <option value="">Select</option>
+                  <option>Under 18</option>
+                  <option>18–24</option>
+                  <option>25–34</option>
+                  <option>35–44</option>
+                  <option>45–59</option>
+                  <option>60 and above</option>
+                </select>
+              </div>
+            </div>
+            <div class="fr">
+              <div class="fg"><label class="fl">Visit Date</label><input class="fi" type="date" name="visitDate" /></div>
+              <div class="fg"><label class="fl">Group Size</label><input class="fi" type="number" name="groupSize" min="1" placeholder="e.g. 4" /></div>
+            </div>
+            <div class="fg">
+              <label class="fl">Type of Visitor</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="visType" value="Solo" />Solo</label>
+                <label class="rp"><input type="radio" name="visType" value="Couple" />Couple</label>
+                <label class="rp"><input type="radio" name="visType" value="Family" />Family</label>
+                <label class="rp"><input type="radio" name="visType" value="Barkada" />Barkada</label>
+                <label class="rp"><input type="radio" name="visType" value="Tour group" />Tour group</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Primary Purpose of Visit</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="purpose" value="Leisure" />Leisure</label>
+                <label class="rp"><input type="radio" name="purpose" value="Educational" />Educational</label>
+                <label class="rp"><input type="radio" name="purpose" value="Photography" />Photography</label>
+                <label class="rp"><input type="radio" name="purpose" value="Cultural" />Cultural</label>
+                <label class="rp"><input type="radio" name="purpose" value="Adventure" />Adventure</label>
+                <label class="rp"><input type="radio" name="purpose" value="Religious" />Religious</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">How did you learn about this destination? <span class="hint">(select all that apply)</span></label>
+              <div class="cg">
+                <label class="cp"><input type="checkbox" name="source" value="Social media" />Social media</label>
+                <label class="cp"><input type="checkbox" name="source" value="Word of mouth" />Word of mouth</label>
+                <label class="cp"><input type="checkbox" name="source" value="Travel blog" />ravel blog</label>
+                <label class="cp"><input type="checkbox" name="source" value="DOT/LGU website" />DOT/LGU website</label>
+                <label class="cp"><input type="checkbox" name="source" value="TV/Radio" />TV/Radio</label>
+                <label class="cp"><input type="checkbox" name="source" value="Travel agency" />Travel agency</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Language Preference</label>
+              <div class="lt" id="langT">
+                <button type="button" class="lb act" data-lang="en">EN</button>
+                <button type="button" class="lb" data-lang="fil">FIL</button>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ── Section T02: Destination ── -->
+          <fieldset class="fsec tour-sec fi2" style="animation-delay:.15s">
+            <legend class="slbl"><span class="snum blue">02</span><span>Destination Details</span></legend>
+
+            <div class="fg">
+              <label class="fl">Tourist Spot / Destination Visited <span class="req">*</span></label>
+              <select class="fi fsel" name="spot">
+                <option value="">Select a destination</option>
+                <option>Beaches / Coastal Areas</option>
+                <option>Heritage Sites / Old Churches</option>
+                <option>Nature Parks / Eco-trails</option>
+                <option>Cultural Centers / Museums</option>
+                <option>Local Markets / Food Hubs</option>
+                <option>Waterfalls / Rivers</option>
+                <option>Mountains / Hiking Trails</option>
+                <option>Farms / Agricultural Tourism</option>
+                <option>Festivals / Cultural Events</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg"><label class="fl">Specific Name of Place (optional)</label><input class="fi" type="text" name="spotName" placeholder="e.g. Punta Diwata Beach, Kapitan Museum..." /></div>
+            <div class="fr">
+              <div class="fg">
+                <label class="fl">How long was your visit?</label>
+                <select class="fi fsel" name="duration">
+                  <option value="">Select duration</option>
+                  <option>Less than 2 hours</option>
+                  <option>Half day (2–4 hours)</option>
+                  <option>Full day</option>
+                  <option>Overnight</option>
+                  <option>2–3 days</option>
+                  <option>More than 3 days</option>
+                </select>
+              </div>
+              <div class="fg">
+                <label class="fl">Estimated Spending (PHP)</label>
+                <select class="fi fsel" name="spend">
+                  <option value="">Select range</option>
+                  <option>Under ₱500</option>
+                  <option>₱500 – ₱1,000</option>
+                  <option>₱1,001 – ₱3,000</option>
+                  <option>₱3,001 – ₱5,000</option>
+                  <option>₱5,001 – ₱10,000</option>
+                  <option>Over ₱10,000</option>
+                </select>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Mode of Transportation Used</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="transport" value="Private vehicle" />Private vehicle</label>
+                <label class="rp"><input type="radio" name="transport" value="Tricycle/Jeepney" />Tricycle/Jeepney</label>
+                <label class="rp"><input type="radio" name="transport" value="Bus" />Bus</label>
+                <label class="rp"><input type="radio" name="transport" value="Motorcycle" />Motorcycle</label>
+                <label class="rp"><input type="radio" name="transport" value="Boat" />Boat</label>
+                <label class="rp"><input type="radio" name="transport" value="On foot" />On foot</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ── Section T03: Ratings ── -->
+          <fieldset class="fsec tour-sec fi2" style="animation-delay:.20s">
+            <legend class="slbl"><span class="snum blue">03</span><span>Experience Ratings</span></legend>
+            <div class="info-box blue">
+              <img src="assets/icon-star.svg" class="iico" alt="" />
+              <span>Rate each aspect from 1 (Poor) to 5 (Excellent). Hover and click the stars to rate.</span>
+            </div>
+
+            <div class="fg"><label class="fl">Cleanliness &amp; Sanitation</label><div class="sr"><span class="st" data-val="1">★</span><span class="st" data-val="2">★</span><span class="st" data-val="3">★</span><span class="st" data-val="4">★</span><span class="st" data-val="5">★</span><span class="slbl-star">Not yet rated</span></div><input type="hidden" name="rClean" /></div>
+            <div class="fg"><label class="fl">Safety &amp; Security</label><div class="sr"><span class="st" data-val="1">★</span><span class="st" data-val="2">★</span><span class="st" data-val="3">★</span><span class="st" data-val="4">★</span><span class="st" data-val="5">★</span><span class="slbl-star">Not yet rated</span></div><input type="hidden" name="rSafe" /></div>
+            <div class="fg"><label class="fl">Accessibility &amp; Transportation</label><div class="sr"><span class="st" data-val="1">★</span><span class="st" data-val="2">★</span><span class="st" data-val="3">★</span><span class="st" data-val="4">★</span><span class="st" data-val="5">★</span><span class="slbl-star">Not yet rated</span></div><input type="hidden" name="rAccess" /></div>
+            <div class="fg"><label class="fl">Friendliness of Locals &amp; Staff</label><div class="sr"><span class="st" data-val="1">★</span><span class="st" data-val="2">★</span><span class="st" data-val="3">★</span><span class="st" data-val="4">★</span><span class="st" data-val="5">★</span><span class="slbl-star">Not yet rated</span></div><input type="hidden" name="rStaff" /></div>
+            <div class="fg"><label class="fl">Value for Money</label><div class="sr"><span class="st" data-val="1">★</span><span class="st" data-val="2">★</span><span class="st" data-val="3">★</span><span class="st" data-val="4">★</span><span class="st" data-val="5">★</span><span class="slbl-star">Not yet rated</span></div><input type="hidden" name="rValue" /></div>
+            <div class="fg"><label class="fl">Overall Experience</label><div class="sr"><span class="st" data-val="1">★</span><span class="st" data-val="2">★</span><span class="st" data-val="3">★</span><span class="st" data-val="4">★</span><span class="st" data-val="5">★</span><span class="slbl-star">Not yet rated</span></div><input type="hidden" name="rOverall" /></div>
+          </fieldset>
+
+          <!-- ── Section T04: Amenities ── -->
+          <fieldset class="fsec tour-sec fi2" style="animation-delay:.25s">
+            <legend class="slbl"><span class="snum blue">04</span><span>Facilities &amp; Amenities</span></legend>
+
+            <div class="fg">
+              <label class="fl">Which amenities were available? <span class="hint">(select all present)</span></label>
+              <div class="cg">
+                <label class="cp"><input type="checkbox" name="amen" value="Restrooms" />Restrooms</label>
+                <label class="cp"><input type="checkbox" name="amen" value="Parking" />Parking</label>
+                <label class="cp"><input type="checkbox" name="amen" value="Tourist guides" />Tourist Guides</label>
+                <label class="cp"><input type="checkbox" name="amen" value="Food stalls" />Food Stalls</label>
+                <label class="cp"><input type="checkbox" name="amen" value="First aid" />First Aid Station</label>
+                <label class="cp"><input type="checkbox" name="amen" value="WiFi" />WiFi</label>
+                <label class="cp"><input type="checkbox" name="amen" value="Souvenir shops" />Souvenir Shops</label>
+                <label class="cp"><input type="checkbox" name="amen" value="Signages" />Clear Signages</label>
+                <label class="cp"><input type="checkbox" name="amen" value="Trash bins" />Trash Bins</label>
+                <label class="cp"><input type="checkbox" name="amen" value="Wheelchair access" />Wheelchair Access</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Which amenities need improvement? <span class="hint">(select all that apply)</span></label>
+              <div class="cg">
+                <label class="cp"><input type="checkbox" name="improve" value="Restrooms" /> Restrooms</label>
+                <label class="cp"><input type="checkbox" name="improve" value="Road access" /> Road Access</label>
+                <label class="cp"><input type="checkbox" name="improve" value="Signage" /> Signage</label>
+                <label class="cp"><input type="checkbox" name="improve" value="Cleanliness" /> Cleanliness</label>
+                <label class="cp"><input type="checkbox" name="improve" value="Security" /> Security</label>
+                <label class="cp"><input type="checkbox" name="improve" value="Connectivity" /> Connectivity</label>
+                <label class="cp"><input type="checkbox" name="improve" value="Food options" /> Food options</label>
+                <label class="cp"><input type="checkbox" name="improve" value="Accommodation" /> Accommodation</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Would you recommend this destination to others?</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="recommend" value="Definitely yes" />Definitely yes</label>
+                <label class="rp"><input type="radio" name="recommend" value="Probably yes" /> Maybe yes</label>
+                <label class="rp"><input type="radio" name="recommend" value="Probably not" /> Maybe not</label>
+                <label class="rp"><input type="radio" name="recommend" value="Definitely not" />Definitely not</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Would you visit again?</label>
+              <div class="rg">
+                <label class="rp"><input type="radio" name="revisit" value="Yes" /> Yes</label>
+                <label class="rp"><input type="radio" name="revisit" value="No" /> No</label>
+                <label class="rp"><input type="radio" name="revisit" value="Unsure" /> Unsure</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ── Section T05: Comments ── -->
+          <fieldset class="fsec tour-sec fi2" style="animation-delay:.30s">
+            <legend class="slbl"><span class="snum blue">05</span><span>Your Comments &amp; Suggestions</span></legend>
+
+            <div class="fg"><label class="fl">What did you enjoy most about your visit?</label><textarea class="fi fta" name="enjoyed" placeholder="Tell us the highlights of your experience..."></textarea></div>
+            <div class="fg"><label class="fl">What needs the most improvement?</label><textarea class="fi fta" name="improvement" placeholder="Share your constructive suggestions..."></textarea></div>
+            <div class="fg"><label class="fl">Any other feedback or recommendations?</label><textarea class="fi fta" name="other" placeholder="Anything else you'd like the LGU tourism office to know..."></textarea></div>
+          </fieldset>
+
+          <div class="fi2" style="animation-delay:.35s">
+            <button type="submit" class="btn bsub tblu">
+              <span>Submit Feedback</span>
+              <img src="assets/icon-arrow.svg" class="barr" alt="" />
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </main>
+
+  </div><!-- /sApp -->
+
+  <!-- ══ SUCCESS MODAL ══ -->
+  <div class="mov" id="modal">
+    <div class="mc">
+      <div class="mica"><img src="assets/icon-check.svg" alt="Success" /></div>
+      <h3 class="mtit">Salamat!</h3>
+      <p class="mmsg" id="mMsg">Your report has been submitted successfully.</p>
+      <button class="btn" id="mClose">Done</button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
