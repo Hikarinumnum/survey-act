@@ -23,7 +23,7 @@
       --head:     #1a1410;
       --green:    #0a5c36;
       --green2:   #0d7044;
-      --green-lt: #d4edda;S
+      --green-lt: #d4edda;
       --blue:     #1a4fa0;
       --blue-lt:  #dce8fb;
       --accent:   #c8a96e;
@@ -158,6 +158,7 @@
       font-family: 'DM Serif Display', serif;
       font-size: 20px; color: var(--green); letter-spacing: .01em;
     }
+    .hnav-links {}
     .hnav-right { display: flex; align-items: center; gap: 10px; }
     .btn-signin-home {
       padding: 7px 18px; border-radius: 8px;
@@ -180,7 +181,6 @@
       margin-top: 64px;
       padding: 80px 5% 60px;
       min-height: 520px;
-      background:linear-gradient(135deg,#0a3d24 0%,#0a5c36 40%,#1a8a55 70%,#52b788 100%);      
       background:
         radial-gradient(ellipse 80% 60% at 60% 40%, rgba(10,92,54,.12) 0%, transparent 70%),
         var(--bg);
@@ -662,9 +662,13 @@
         </svg>
         <span>Bisita PH</span>
       </div>
+      <!-- Added hnav-links spacer to match file 2 layout -->
+      <div class="hnav-links"></div>
       <div class="hnav-right">
-        <div class="tbtn-wrap" id="hTheme"><span class="tico sun">☀</span><span class="tico moon">☽</span></div>
-        <button class="btn-signin-home" id="goLoginHome">Sign In</button>
+        <!-- position:relative added to match file 2 -->
+        <div class="tbtn-wrap" id="hTheme" style="position:relative"><span class="tico sun">☀</span><span class="tico moon">☽</span></div>
+        <!-- id changed from goLoginHome → goLogin to match file 2 -->
+        <button class="btn-signin-home" id="goLogin">Sign In</button>
         <button class="btn-survey" id="goSurveyHome">Take Survey</button>
       </div>
     </nav>
@@ -688,15 +692,16 @@
       </div>
     </div>
 
-    <!-- DESTINATION CARDS -->
+    <!-- DESTINATION CARDS — flat background colors to match file 2 -->
     <div class="hsec" style="padding-top:0">
       <div class="hsec-head">
         <h2>Popular Destinations</h2>
         <p>Explore top-rated spots and tourist attractions across the islands.</p>
       </div>
       <div class="card-grid">
+        <!-- Card 1: Boracay — flat color, keep badge + label -->
         <div class="dest-card">
-          <div class="card-img" style="background: linear-gradient(135deg,#a8cdb5,#5a9e78);">
+          <div class="card-img" style="background:#a8cdb5;">
             <span class="card-badge">🏖️ Beach</span>
             <div class="card-img-label">Boracay Beach</div>
           </div>
@@ -707,10 +712,9 @@
             <div class="card-price">from <strong>₱1,200</strong> per person</div>
           </div>
         </div>
+        <!-- Card 2: Bohol — flat color, no badge, no label (matches file 2) -->
         <div class="dest-card">
-          <div class="card-img" style="background: linear-gradient(135deg,#7a9a5a,#4a7a3a);">
-            <span class="card-badge">🌿 Nature</span>
-          </div>
+          <div class="card-img" style="background:#7a9a5a;"></div>
           <div class="card-body">
             <div class="card-location">BOHOL</div>
             <div class="card-title">Chocolate Hills & Tarsier Sanctuary Tour</div>
@@ -718,8 +722,9 @@
             <div class="card-price">from <strong>₱950</strong> per person</div>
           </div>
         </div>
+        <!-- Card 3: Vigan — flat color, keep badge -->
         <div class="dest-card">
-          <div class="card-img" style="background: linear-gradient(135deg,#b09070,#806040);">
+          <div class="card-img" style="background:#b09070;">
             <span class="card-badge">🏛️ Heritage</span>
           </div>
           <div class="card-body">
@@ -729,8 +734,9 @@
             <div class="card-price">from <strong>₱500</strong> per person</div>
           </div>
         </div>
+        <!-- Card 4: Siargao — flat color, keep badge -->
         <div class="dest-card">
-          <div class="card-img" style="background: linear-gradient(135deg,#6080a0,#304060);">
+          <div class="card-img" style="background:#6080a0;">
             <span class="card-badge">🏄 Surf</span>
           </div>
           <div class="card-body">
@@ -743,7 +749,7 @@
       </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER — shortened description to match file 2 -->
     <footer>
       <div class="footer-grid">
         <div class="footer-brand">
@@ -761,7 +767,7 @@
             </svg>
             Bisita PH
           </div>
-          <p>Promoting wellness, health monitoring, and tourism feedback to support sustainable local government services across the Philippines.</p>
+          <p>Promoting wellness, health monitoring, and tourism feedback to support sustainable local government services.</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -802,7 +808,6 @@
 
     <div class="lcard">
       <button class="back-home" id="backHome1">← Back to Bisita PH</button>
-      <!-- NOTE: Remove action/method for pure JS flow; add action="login.php" method="POST" for PHP backend -->
       <form id="loginForm" action="login.php" method="POST">
         <div class="llogo">
           <svg width="30" height="30" viewBox="0 0 80 80" fill="none">
@@ -829,8 +834,7 @@
             <button class="shp" id="tPw" type="button">show</button>
           </div>
         </div>
-        <!-- type="button" lets JS intercept; change to type="submit" for native PHP POST -->
-        <button class="btn" id="lBtn" type="button">
+        <button class="btn" type="submit">
           <span>Continue</span><span class="barr">→</span>
         </button>
         <p class="lfoot">Don't have an account? <a href="#" id="goReg">Register here</a></p>
@@ -855,7 +859,6 @@
 
     <div class="lcard" style="max-width:500px">
       <button class="back-home" id="backHome2">← Back to Bisita PH</button>
-      <!-- NOTE: add action="register.php" method="POST" for PHP backend -->
       <form id="registerForm" action="register.php" method="POST">
         <div class="llogo">
           <svg width="30" height="30" viewBox="0 0 80 80" fill="none">
@@ -871,8 +874,8 @@
         </div>
         <h1 class="ltitle">Create your<br/><em>account.</em></h1>
         <div class="fr">
-          <div class="fg"><label class="fl">First Name</label><input class="fi" type="text" name="first_name" placeholder="Juan"/></div>
-          <div class="fg"><label class="fl">Last Name</label><input class="fi" type="text" name="last_name" placeholder="dela Cruz"/></div>
+          <div class="fg"><label class="fl">First Name</label><input class="fi" type="text" name="fname" placeholder="Juan"/></div>
+          <div class="fg"><label class="fl">Last Name</label><input class="fi" type="text" name="lname" placeholder="dela Cruz"/></div>
         </div>
         <div class="fg"><label class="fl">Email Address</label><input class="fi" type="email" name="email" placeholder="juan@email.com"/></div>
         <div class="fg"><label class="fl">Contact Number</label><input class="fi" type="tel" name="contact" placeholder="09XX-XXX-XXXX"/></div>
@@ -911,8 +914,7 @@
           </select>
         </div>
         <div class="fg"><label class="fl">Password</label><input class="fi" type="password" name="password" placeholder="Create a password"/></div>
-        <!-- type="button" lets JS intercept; change to type="submit" for native PHP POST -->
-        <button class="btn" id="rBtn" type="button"><span>Register</span><span class="barr">→</span></button>
+        <button class="btn" type="submit"><span>Register</span><span class="barr">→</span></button>
         <p class="lfoot">Already have an account? <a href="#" id="goLog">Sign in</a></p>
       </form>
     </div>
@@ -941,7 +943,6 @@
         </svg>
         <span class="ltxt">Bisita PH</span>
 
-        <!-- Divider + Nav grouped with logo -->
         <div class="tbl-divider"></div>
         <nav class="tnav">
           <button class="tbtn2 act" data-tab="health">
@@ -959,7 +960,7 @@
           <div class="uav" id="uAv">J</div>
           <span id="uName">Juan</span>
         </div>
-        <button class="lout" id="logOut" title="Logout">⏏</button>
+        <a class="lout" href="logout.php" title="Logout">⏏</a>
       </div>
     </header>
 
@@ -978,7 +979,6 @@
           <div class="prog-bar" id="hProg" style="width:0%"></div>
         </div>
 
-        <!-- NOTE: add action="health_submit.php" method="POST" for PHP backend -->
         <form class="sform" id="hForm" action="health_submit.php" method="POST" novalidate>
 
           <!-- ── Section 01: Personal Information ── -->
@@ -1293,7 +1293,6 @@
           <div class="prog-bar tour-bar" id="tProg" style="width:0%"></div>
         </div>
 
-        <!-- NOTE: add action="tourism_submit.php" method="POST" for PHP backend -->
         <form class="sform" id="tForm" action="tourism_submit.php" method="POST" novalidate>
 
           <!-- ── Section T01: Visitor Profile ── -->
@@ -1523,7 +1522,7 @@
 
 
   <script>
-  /* ═══════════════════════════════════════════════
+   /* ═══════════════════════════════════════════════
      CUSTOM CURSOR
   ═══════════════════════════════════════════════ */
   const dot  = document.getElementById('cDot');
@@ -1538,7 +1537,31 @@
   document.addEventListener('mouseup',   () => { dot.style.transform = 'translate(-50%,-50%) scale(1)'; });
 
   /* ═══════════════════════════════════════════════
-     PAGE NAVIGATION
+     SESSION HELPERS
+  ═══════════════════════════════════════════════ */
+  function getUserSession() {
+    try { return JSON.parse(localStorage.getItem('bisita_user')); }
+    catch(e) { return null; }
+  }
+  function setUserSession(data) {
+    localStorage.setItem('bisita_user', JSON.stringify(data));
+  }
+  function clearUserSession() {
+    localStorage.removeItem('bisita_user');
+  }
+  function applyUserUI(name) {
+    const init = name ? name[0].toUpperCase() : '?';
+    const display = name ? name.charAt(0).toUpperCase() + name.slice(1) : 'User';
+    document.getElementById('uAv').textContent   = init;
+    document.getElementById('uName').textContent = display;
+    const hUid = document.getElementById('hUserId');
+    const tUid = document.getElementById('tUserId');
+    if (hUid) hUid.value = name || '';
+    if (tUid) tUid.value = name || '';
+  }
+
+  /* ═══════════════════════════════════════════════
+     PAGE NAVIGATION (UI-only — no form logic here)
   ═══════════════════════════════════════════════ */
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1546,9 +1569,17 @@
     window.scrollTo(0, 0);
   }
 
-  // Home nav
-  document.getElementById('goLoginHome').addEventListener('click', () => showPage('pgLogin'));
-  document.getElementById('goSurveyHome').addEventListener('click', () => showPage('pgLogin'));
+  // Sign In — ALWAYS show login page, never skip
+  document.getElementById('goLogin').addEventListener('click', () => {
+    showPage('pgLogin');
+  });
+
+  // Take Survey — skip to app only if already logged in
+  document.getElementById('goSurveyHome').addEventListener('click', () => {
+    const sess = getUserSession();
+    if (sess && sess.name) { showPage('pgApp'); return; }
+    showPage('pgLogin');
+  });
 
   // Login ↔ Register
   document.getElementById('goReg').addEventListener('click', e => { e.preventDefault(); showPage('pgReg'); });
@@ -1557,38 +1588,6 @@
   // Back buttons
   document.getElementById('backHome1').addEventListener('click', () => showPage('pgHome'));
   document.getElementById('backHome2').addEventListener('click', () => showPage('pgHome'));
-
-  // Logout
-  document.getElementById('logOut').addEventListener('click', () => showPage('pgHome'));
-
-  /* ═══════════════════════════════════════════════
-     LOGIN BUTTON — JS-controlled (no native POST)
-     Swap type="button" → type="submit" on #lBtn
-     and remove this handler if using PHP directly
-  ═══════════════════════════════════════════════ */
-  document.getElementById('lBtn').addEventListener('click', () => {
-    const em = document.getElementById('lEm').value.trim();
-    const pw = document.getElementById('lPw').value.trim();
-    if (!em || !pw) { alert('Please enter your ID/email and password.'); return; }
-    // Derive display name from email
-    const name = em.includes('@') ? em.split('@')[0] : em;
-    document.getElementById('uAv').textContent   = name[0].toUpperCase();
-    document.getElementById('uName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
-    showPage('pgApp');
-  });
-
-  /* ═══════════════════════════════════════════════
-     REGISTER BUTTON — JS-controlled
-     Swap type="button" → type="submit" on #rBtn
-     and remove this handler if using PHP directly
-  ═══════════════════════════════════════════════ */
-  document.getElementById('rBtn').addEventListener('click', () => {
-    const first = document.querySelector('#pgReg input[name="first_name"]').value.trim();
-    if (!first) { alert('Please fill in at least your first name.'); return; }
-    document.getElementById('uAv').textContent   = first[0].toUpperCase();
-    document.getElementById('uName').textContent = first;
-    showPage('pgApp');
-  });
 
   /* ═══════════════════════════════════════════════
      PASSWORD SHOW/HIDE
@@ -1654,7 +1653,7 @@
   document.querySelectorAll('.sr').forEach(sr => {
     const stars   = sr.querySelectorAll('.st');
     const lbl     = sr.querySelector('.slbl-star');
-    const hidden  = sr.nextElementSibling; // <input type="hidden">
+    const hidden  = sr.nextElementSibling;
     const labels  = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
 
     stars.forEach((star, i) => {
@@ -1680,7 +1679,7 @@
   });
 
   /* ═══════════════════════════════════════════════
-     PROGRESS BAR — health form
+     PROGRESS BAR
   ═══════════════════════════════════════════════ */
   function updateProgress(formId, barId) {
     const form  = document.getElementById(formId);
@@ -1700,27 +1699,17 @@
   });
 
   /* ═══════════════════════════════════════════════
-     FORM SUBMIT — shows modal (JS demo mode)
-     If using PHP: remove these handlers and let
-     the native form POST fire; show the modal
-     from PHP via a redirect or session flash.
+     SUCCESS MODAL (closed by user — no form logic)
   ═══════════════════════════════════════════════ */
-  function handleSubmit(formId, msg) {
-    document.getElementById(formId).addEventListener('submit', function(e) {
-      e.preventDefault(); // remove this line when wiring to PHP
-      document.getElementById('mMsg').textContent = msg;
-      document.getElementById('modal').classList.add('open');
-    });
-  }
-  handleSubmit('hForm', 'Your health report has been submitted successfully. Salamat!');
-  handleSubmit('tForm', 'Your tourism feedback has been submitted successfully. Maraming salamat!');
-
   document.getElementById('mClose').addEventListener('click', () => {
     document.getElementById('modal').classList.remove('open');
+    if (window.history.replaceState) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
   });
 
   /* ═══════════════════════════════════════════════
-     THEME TOGGLE — synced across all pages
+     THEME TOGGLE
   ═══════════════════════════════════════════════ */
   const root = document.documentElement;
   function toggleTheme() {
@@ -1730,6 +1719,62 @@
     const el = document.getElementById(id);
     if (el) el.addEventListener('click', toggleTheme);
   });
+
+  /* ═══════════════════════════════════════════════
+     ON PAGE LOAD — read URL params from PHP redirects
+  ═══════════════════════════════════════════════ */
+  (function initFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('status');
+    const name   = params.get('name') || '';
+    const id     = params.get('id')   || '';
+    const msg    = params.get('msg')  || '';
+
+    // Immediately clean the URL so refreshing always lands on Home page
+    if (window.history.replaceState) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    if (status === 'login_success' || status === 'registered') {
+      // Save session, go to app (but URL is now clean so refreshes go home)
+      setUserSession({ name: name, id: id });
+      applyUserUI(name);
+      showPage('pgApp');
+
+    } else if (status === 'login_error') {
+      // Clear old session, show error on login page
+      clearUserSession();
+      const errBox = document.getElementById('loginErr');
+      const errMsg = document.getElementById('loginErrMsg');
+      if (errBox) errBox.classList.add('show');
+      if (errMsg) errMsg.textContent = msg || 'Invalid email or password.';
+      showPage('pgLogin');
+
+    } else if (status === 'health_submitted') {
+      const sess = getUserSession();
+      if (sess) applyUserUI(sess.name);
+      showPage('pgApp');
+      document.getElementById('mMsg').textContent = 'Your health report has been submitted successfully. Salamat!';
+      document.getElementById('modal').classList.add('open');
+
+    } else if (status === 'tourism_submitted') {
+      const sess = getUserSession();
+      if (sess) applyUserUI(sess.name);
+      showPage('pgApp');
+      document.querySelectorAll('.tbtn2').forEach(b => b.classList.remove('act'));
+      document.querySelectorAll('.tc').forEach(t => t.classList.remove('act'));
+      document.querySelector('.tbtn2[data-tab="tourism"]').classList.add('act');
+      document.getElementById('tTour').classList.add('act');
+      document.getElementById('mMsg').textContent = 'Your tourism feedback has been submitted successfully. Maraming salamat!';
+      document.getElementById('modal').classList.add('open');
+
+    } else {
+      // Normal load (no status param) — Home page stays visible from HTML
+      // Just update the avatar if they have a saved session
+      const sess = getUserSession();
+      if (sess && sess.name) applyUserUI(sess.name);
+    }
+  })();
   </script>
 
 </body>
