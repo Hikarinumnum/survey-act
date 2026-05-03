@@ -1,0 +1,1 @@
+Bisita PH is a web-based community survey platform designed to help local barangays collect, monitor, and analyze resident health data and local tourism feedback. The system ensures that health workers and local government units (LGUs) have the data they need to improve community services.
